@@ -1,0 +1,7 @@
+Route:
+	- Routing -> Tra ve ket qua
+	- Routing -> view -> Tra ve ket qua
+	- Routing -> controller -> Tra ket qua ve
+	- Routing -> controller -> view -> tra ket qua ve
+Route dynamic:
+	- localhost:8001/bai-viet/{duong-dan-dynamic}.html
