@@ -1,0 +1,38 @@
+Nội dung học:
+- Xử lý Form
+- Kết nối CSDL:
+	- migration
+	- model
+	- DB
+====================================================
+Phát triển dự án quản lý:
+	- Quản lý người dùng 
+	- Quản lý danh mục
+	- Quản lý sản phẩm
+
+Chuyển đồi: danh mục sản phẩm -> module
+	- Danh sách danh mục sản phẩm
+	- Thêm danh mục
+	- Sửa danh mục
+	- Xoá danh mục
+
+1) Controller -> CategoryController
+2) Break views
+	- index.blade.php -> Hien thi danh sach danh muc san pham
+	- add.blade.php -> Form them danh muc san pham
+	- edit.blade.php -> Form sua danh muc san pham
+	- delete.blade.php -> Xoa danh muc san pham
+3) Định nghĩa route:
+	- Danh sách danh mục sản phẩm
+		- category/index -> Hien thi danh muc san pham
+			- CategoryController@index -> view -> index.balde.php
+
+	- Thêm danh mục
+		- category/add -> CategoryController@add -> add.blade.php
+		- category/postAdd -> CategoryController@postAdd -> Lay du lieu them vao database
+	- Sửa danh mục
+		- category/edit -> CategoryController@edit -> edit.blade.php
+		- category/postEdit -> CategoryController@postEdit -> Luu du lieu
+	- Xoá danh mục
+		- category/delete -> CategoryController@delete -> delete.blade.php
+		- category/postDelete -> CategoryController/postDelete -> Xoa du lieu
