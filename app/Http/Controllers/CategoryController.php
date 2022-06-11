@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -11,20 +12,28 @@ class CategoryController extends Controller
     {
         $numPage = 3;
 
-        $categoryList = DB::table('category')
-            ->paginate($numPage);
+        // $categoryList = DB::table('category')
+        //     ->paginate($numPage);
+        $categoryList = Category::paginate($numPage);
+
+        if(!isset($request->page) || $request->page <= 0) {
+            $request->page = 1;
+        }
 
         $index = ($request->page - 1) * $numPage;
 
         return view('category.index', [
             'categoryList' => $categoryList,
-            'index' => $index
+            'index' => $index,
+            'title' => "Category Page"
         ]);
     }
 
     public function add(Request $request)
     {
-        return view('category.add');
+        return view('category.add', [
+            'title' => "Add Category Page"
+        ]);
     }
     
     public function postAdd(Request $request)
@@ -32,7 +41,10 @@ class CategoryController extends Controller
         // var_dump($request->all());
         $name = $request->name;
         // echo $name;
-        DB::table('category')->insert([
+        // DB::table('category')->insert([
+        //     'name' => $name
+        // ]);
+        Category::insert([
             'name' => $name
         ]);
 
@@ -41,14 +53,17 @@ class CategoryController extends Controller
     
     public function edit(Request $request, $id)
     {
-        $item = DB::table('category')
-            ->where('id', $id)
-            ->get();
-        $name = $item[0]->name;
+        // $item = DB::table('category')
+        //     ->where('id', $id)
+        //     ->get();
+        // $name = $item[0]->name;
+        $item = Category::find($id);
+        $name = $item->name;
 
         return view('category.edit', [
             'id' => $id,
-            'name' => $name
+            'name' => $name,
+            'title' => "Edit Category Page"
         ]);
     }
     
@@ -57,8 +72,12 @@ class CategoryController extends Controller
         $id = $request->id;
         $name = $request->name;
 
-        DB::table('category')
-            ->where('id', $id)
+        // DB::table('category')
+        //     ->where('id', $id)
+        //     ->update([
+        //         'name' => $name
+        //     ]);
+        Category::where('id', $id)
             ->update([
                 'name' => $name
             ]);
@@ -68,14 +87,17 @@ class CategoryController extends Controller
     
     public function delete(Request $request, $id)
     {
-        $item = DB::table('category')
-            ->where('id', $id)
-            ->get();
-        $name = $item[0]->name;
+        // $item = DB::table('category')
+        //     ->where('id', $id)
+        //     ->get();
+        // $name = $item[0]->name;
+        $item = Category::find($id);
+        $name = $item->name;
 
         return view('category.delete', [
             'id' => $id,
-            'name' => $name
+            'name' => $name,
+            'title' => "Delete Category Page"
         ]);
     }
     
@@ -83,8 +105,10 @@ class CategoryController extends Controller
     {
         $id = $request->id;
 
-        DB::table('category')
-            ->where('id', $id)
+        // DB::table('category')
+        //     ->where('id', $id)
+        //     ->delete();
+        Category::where('id', $id)
             ->delete();
 
         return redirect()->route('category.index');

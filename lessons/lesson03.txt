@@ -1,0 +1,5 @@
+Nội dung kiến thức:
+	- Layout trong dự án
+	- Model
+	- Viết truy vấn trên nhiều bảng
+	- 1 số cứ pháp blade
