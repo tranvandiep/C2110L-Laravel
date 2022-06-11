@@ -20,6 +20,8 @@
 	@yield('css')
 </head>
 <body>
+@include('layouts/header')
+
 <div class="container">
 <!-- Phan code rieng cua tung page -->
 @yield('content')
@@ -27,5 +29,7 @@
 
 @yield('js')
 </div>
+
+@include('layouts/footer')
 </body>
 </html>
