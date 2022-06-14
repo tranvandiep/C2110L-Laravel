@@ -1,4 +1,4 @@
-@extends('layouts/master')
+@extends('layouts/admin')
 
 @section('content')
 <form method="post" action="{{ route('category.postAdd') }}">

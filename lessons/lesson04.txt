@@ -1,0 +1,5 @@
+Nội dung kiến thức:
+- Chia route theo module chương trình -> DONE
+- Apply 1 template trang quản trị vào dự án
+- Apple 1 template frontend cho dự án
+- Kết nối login & register & authentication trong dự án

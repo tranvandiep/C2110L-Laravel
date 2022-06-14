@@ -1,4 +1,4 @@
-@extends('layouts/master')
+@extends('layouts/admin')
 
 @section('content')
 <a href="{{ route('product.create') }}"><button class='btn btn-success mb-3'>Add New Product</button></a>

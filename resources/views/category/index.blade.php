@@ -1,4 +1,4 @@
-@extends('layouts/master')
+@extends('layouts/admin')
 
 @section('content')
 <a href="{{ route('category.add') }}"><button class='btn btn-success mb-3'>Add New Category</button></a>
